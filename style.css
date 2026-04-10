@@ -189,6 +189,11 @@ h1.main-title {
     align-items: center;
 }
 
+.header-controls {
+    display: flex;
+    gap: 10px;
+}
+
 .timer-card {
     border: var(--border-width) solid var(--text);
     background: white;

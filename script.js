@@ -320,6 +320,15 @@ function resumeGame() {
     startRoundTimer();
 }
 
+function returnToHome() {
+    if (gameState.timer > 0 && gameState.timer < 60) {
+        if (!confirm("ABANDON MATCH AND RETURN TO HQ?")) return;
+    }
+    clearInterval(gameState.timerInterval);
+    gameState.isPaused = false;
+    showScreen('home');
+}
+
 function prepareRound() {
     // Skip 3-2-1 Countdown as requested
     showScreen('game');
@@ -502,9 +511,10 @@ document.getElementById('skip-btn').addEventListener('click', handleSkip);
 document.getElementById('pass-btn').addEventListener('click', handlePass);
 document.getElementById('next-turn-btn').addEventListener('click', nextTurn);
 document.getElementById('end-game-early').addEventListener('click', endGame);
-document.getElementById('restart-btn').addEventListener('click', () => showScreen('home'));
+document.getElementById('restart-btn').addEventListener('click', returnToHome);
 document.getElementById('pause-btn').addEventListener('click', pauseGame);
 document.getElementById('resume-btn-overlay').addEventListener('click', resumeGame);
+document.getElementById('home-btn').addEventListener('click', returnToHome);
 
 // Round Selection Handling
 dom.roundSelector?.addEventListener('click', (e) => {
