@@ -1,7 +1,8 @@
 /**
  * FINANCE TABOO V2.1 - MARKET MAYHEM (POLISHED FLOW)
- * Polished Animations, Auto-transitions, and 3-2-1 Countdown
  */
+
+window.addEventListener('DOMContentLoaded', () => {
 
 const WORDS = [
     // BANKING
@@ -321,6 +322,7 @@ function resumeGame() {
 }
 
 function returnToHome() {
+    console.log("Home Button Triggered");
     if (gameState.timer > 0 && gameState.timer < 60) {
         if (!confirm("ABANDON MATCH AND RETURN TO HQ?")) return;
     }
@@ -530,3 +532,5 @@ dom.roundSelector?.addEventListener('click', (e) => {
 document.getElementById('share-btn')?.addEventListener('click', () => {
     alert("Snapshot saved to clipboard! (Simulated)");
 });
+
+}); // End DOMContentLoaded
