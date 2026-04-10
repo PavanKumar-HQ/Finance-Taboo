@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FINANCE TABOO | Market Mayhem V2</title>
+    <meta name="description" content="A premium finance-themed party game. Challenge your knowledge with multiple modes and wild cards.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- OVERLAYS -->
+    <div id="countdown-overlay" class="overlay hidden">
+        <span id="countdown-number">3</span>
+    </div>
+
+    <div id="auto-result-overlay" class="overlay hidden">
+        <div class="result-card">
+            <h2 id="auto-result-msg">TEAM BULLS DOMINATED!</h2>
+            <div id="auto-result-score">+5 PTS</div>
+        </div>
+    </div>
+
+    <div id="pause-overlay" class="overlay hidden">
+        <h2 class="main-title" style="color: white; transform: rotate(0deg);">PAUSED</h2>
+        <button id="resume-btn-overlay" class="neo-btn btn-yellow" style="margin-top: 20px;">RESUME GAME</button>
+    </div>
+
+    <div id="app" class="neo-container">
+        
+        <!-- HOME SCREEN -->
+        <section id="home-screen" class="screen">
+            <h1 class="main-title">FINANCE<br>TABOO</h1>
+            <div class="subtitle">MARKET MAYHEM V2</div>
+            
+            <div class="setup-grid">
+                <div class="input-group">
+                    <label>TEAM 1 NAME</label>
+                    <input type="text" id="team1-name" placeholder="BULLS" value="BULLS">
+                </div>
+                <div class="input-group">
+                    <label>TEAM 2 NAME</label>
+                    <input type="text" id="team2-name" placeholder="BEARS" value="BEARS">
+                </div>
+                
+                <div class="input-group">
+                    <label>GAME MODE</label>
+                    <select id="mode-select">
+                        <option value="classic">CLASSIC (60s, 3 Skips)</option>
+                        <option value="rapid">RAPID FIRE (30s, 0 Skips)</option>
+                        <option value="risk">RISK (+2 Correct, -1 Skip)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>CATEGORY</label>
+                    <select id="category-select">
+                        <option value="all">ALL CATEGORIES</option>
+                        <option value="banking">BANKING</option>
+                        <option value="stocks">STOCK MARKET</option>
+                        <option value="crypto">CRYPTO</option>
+                        <option value="personal">PERSONAL FINANCE</option>
+                        <option value="accounting">ACCOUNTING</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>TOTAL ROUNDS</label>
+                    <div id="round-selector" class="segmented-control">
+                        <button type="button" class="seg-btn selected" data-value="1">1</button>
+                        <button type="button" class="seg-btn" data-value="2">2</button>
+                        <button type="button" class="seg-btn" data-value="3">3</button>
+                    </div>
+                </div>
+            </div>
+
+            <button id="start-game" class="neo-btn btn-yellow">INITIALIZE GAME</button>
+        </section>
+
+        <!-- GAME SCREEN -->
+        <section id="game-screen" class="screen hidden">
+            <header class="game-header">
+                <div class="team-unit">
+                    <span id="current-team-display">BULLS</span>
+                    <div id="role-display" class="role-badge">SPEAKER: PLAYER A</div>
+                </div>
+                <div class="timer-unit">
+                    <div id="timer" class="timer-card">60</div>
+                    <button id="pause-btn" class="neo-btn btn-mini btn-yellow">⏸</button>
+                </div>
+            </header>
+
+            <div class="hud-bar">
+                <div id="streak-count" class="hud-item">🔥 0</div>
+                <div id="skips-left" class="hud-item">💣 3</div>
+                <div id="accuracy-val" class="hud-item">🎯 100%</div>
+            </div>
+
+            <div id="game-card-container">
+                <div id="wildcard-label" class="wild-card-banner hidden">WILD CARD: NO HANDS</div>
+                <div class="game-card" id="card">
+                    <h2 id="target-word">DIVIDEND</h2>
+                    <ul class="taboo-list" id="taboo-list">
+                        <li>SHARE</li>
+                        <li>PROFIT</li>
+                        <li>STOCK</li>
+                        <li>PAYMENT</li>
+                    </ul>
+                </div>
+                <div class="score-pill">SCORE: <span id="current-score">0</span></div>
+            </div>
+
+            <div class="game-controls">
+                <button id="correct-btn" class="neo-btn btn-green">✅ CORRECT</button>
+                <div class="secondary-controls">
+                    <button id="skip-btn" class="neo-btn btn-yellow">⏭ SKIP</button>
+                    <button id="pass-btn" class="neo-btn btn-red">❌ PASS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULT SCREEN -->
+        <section id="result-screen" class="screen hidden">
+            <h2 class="round-title">ROUND SUMMARY</h2>
+            <div class="result-stats">
+                <div class="stat-box">
+                    <span class="stat-label">CORRECT GUESSES</span>
+                    <span id="round-correct" class="stat-value">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">SKIPS USED</span>
+                    <span id="round-skipped" class="stat-value">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">ROUND ACCURACY</span>
+                    <span id="round-accuracy" class="stat-value">0%</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">POINTS EARNED</span>
+                    <span id="round-points" class="stat-value">0</span>
+                </div>
+            </div>
+            
+            <div class="result-actions">
+                <button id="next-turn-btn" class="neo-btn btn-blue">NEXT TEAM →</button>
+                <button id="end-game-early" class="neo-btn btn-red" style="font-size: 0.8rem; margin-top: 20px;">ABANDON MATCH</button>
+            </div>
+        </section>
+
+        <!-- FINAL SCORE SCREEN -->
+        <section id="final-screen" class="screen hidden">
+            <h2 class="main-title">THE WINNER</h2>
+            <div id="winner-announcement" class="winner-card">
+                <span id="winner-name" class="winner-glow">TEAM BULLS</span>
+                <p>MARKET DOMINATION ACHIEVED</p>
+            </div>
+            
+            <ul id="final-score-list" class="score-list">
+                <!-- Dynamic List -->
+            </ul>
+
+            <div class="final-controls">
+                <button id="restart-btn" class="neo-btn btn-yellow">NEW VENTURE</button>
+                <button id="share-btn" class="neo-btn btn-blue">SHARE SNAPSHOT</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
