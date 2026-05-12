@@ -11,32 +11,68 @@ const WORDS = [
     { word: "MORTGAGE", taboo: ["HOUSE", "LOAN", "BANK", "PROPERTY", "DEBT"], difficulty: "medium", category: "banking" },
     { word: "OVERDRAFT", taboo: ["BANK", "FEE", "NEGATIVE", "ACCOUNT", "LIMIT"], difficulty: "medium", category: "banking" },
     { word: "CENTRAL BANK", taboo: ["GOVERNMENT", "MONEY", "FED", "RESERVE", "INTEREST"], difficulty: "hard", category: "banking" },
+    { word: "CREDIT CARD", taboo: ["PLASTIC", "DEBT", "SPEND", "LIMIT", "VISA"], difficulty: "easy", category: "banking" },
+    { word: "DEBIT CARD", taboo: ["BANK", "CASH", "ATM", "ACCOUNT", "PIN"], difficulty: "easy", category: "banking" },
+    { word: "WIRE TRANSFER", taboo: ["SEND", "BANK", "MONEY", "SWIFT", "ONLINE"], difficulty: "medium", category: "banking" },
+    { word: "COLLATERAL", taboo: ["LOAN", "SECURITY", "ASSET", "HOUSE", "GUARANTEE"], difficulty: "hard", category: "banking" },
+    { word: "ATM", taboo: ["CASH", "MACHINE", "BANK", "WITHDRAW", "MONEY"], difficulty: "easy", category: "banking" },
     
     // STOCKS
     { word: "DIVIDEND", taboo: ["SHARE", "PROFIT", "STOCK", "PAYMENT", "HOLDER"], difficulty: "easy", category: "stocks" },
     { word: "BULL MARKET", taboo: ["UP", "STOCKS", "RISING", "PRICES", "BUY"], difficulty: "easy", category: "stocks" },
+    { word: "BEAR MARKET", taboo: ["DOWN", "FALLING", "STOCKS", "SELL", "PRICES"], difficulty: "easy", category: "stocks" },
     { word: "PORTFOLIO", taboo: ["STOCKS", "INVEST", "COLLECTION", "ASSETS", "DIVERSE"], difficulty: "medium", category: "stocks" },
     { word: "IPO", taboo: ["STOCK", "PUBLIC", "OFFERING", "COMPANY", "INITIAL"], difficulty: "medium", category: "stocks" },
-    { word: "SHORT SELLING", taboo: ["BET", "DAWN", "STOCKS", "PROFIT", "FALLING"], difficulty: "hard", category: "stocks" },
+    { word: "SHORT SELLING", taboo: ["BET", "DOWN", "STOCKS", "PROFIT", "FALLING"], difficulty: "hard", category: "stocks" },
     { word: "ARBITRAGE", taboo: ["PROFIT", "MARKET", "PRICE", "BUY", "SELL"], difficulty: "hard", category: "stocks" },
+    { word: "HEDGE FUND", taboo: ["INVEST", "MONEY", "MANAGER", "RICH", "AGGRESSIVE"], difficulty: "hard", category: "stocks" },
+    { word: "BLUE CHIP", taboo: ["STABLE", "LARGE", "COMPANY", "SAFE", "STOCK"], difficulty: "medium", category: "stocks" },
+    { word: "MARKET CAP", taboo: ["VALUE", "SIZE", "COMPANY", "TOTAL", "SHARES"], difficulty: "medium", category: "stocks" },
+    { word: "NASDAQ", taboo: ["TECH", "EXCHANGE", "STOCKS", "INDEX", "NEW YORK"], difficulty: "medium", category: "stocks" },
 
     // CRYPTO
     { word: "BITCOIN", taboo: ["CRYPTO", "CURRENCY", "DIGITAL", "MINING", "SATOSHI"], difficulty: "easy", category: "crypto" },
+    { word: "ETHEREUM", taboo: ["CRYPTO", "SMART CONTRACT", "VITALIK", "COIN", "BLOCKCHAIN"], difficulty: "medium", category: "crypto" },
     { word: "BLOCKCHAIN", taboo: ["LEDGER", "BITCOIN", "DIGITAL", "SECURE", "NODE"], difficulty: "medium", category: "crypto" },
     { word: "NFT", taboo: ["ART", "DIGITAL", "TOKEN", "CRYPTO", "OWNERSHIP"], difficulty: "medium", category: "crypto" },
     { word: "STABLECOIN", taboo: ["DOLLAR", "CRYPTO", "FIXED", "VALUE", "PEG"], difficulty: "hard", category: "crypto" },
-    { word: "WHITELIST", taboo: ["CRYPTO", "ALLOW", "LIST", "ACCESS", "EARLY"], difficulty: "hard", category: "crypto" },
+    { word: "WALLET", taboo: ["KEYS", "CRYPTO", "STORAGE", "PRIVATE", "ADDRESS"], difficulty: "easy", category: "crypto" },
+    { word: "MINING", taboo: ["COMPUTER", "BITCOIN", "POWER", "REWARD", "PUZZLE"], difficulty: "medium", category: "crypto" },
+    { word: "GAS FEE", taboo: ["ETHEREUM", "COST", "TRANSACTION", "NETWORK", "PAY"], difficulty: "hard", category: "crypto" },
+    { word: "HODL", taboo: ["HOLD", "SELL", "CRYPTO", "PATIENCE", "WAIT"], difficulty: "easy", category: "crypto" },
 
     // PERSONAL FINANCE
     { word: "BUDGET", taboo: ["PLAN", "MONEY", "SPEND", "SAVE", "LIST"], difficulty: "easy", category: "personal" },
     { word: "CREDIT SCORE", taboo: ["LOAN", "BANK", "RATING", "BORROW", "HISTORY"], difficulty: "medium", category: "personal" },
     { word: "NET WORTH", taboo: ["ASSETS", "WEALTH", "MONEY", "VALUE", "SAY"], difficulty: "medium", category: "personal" },
     { word: "EMERGENCY FUND", taboo: ["SAVE", "MONEY", "CASH", "URGENT", "SAFETY"], difficulty: "hard", category: "personal" },
+    { word: "401K", taboo: ["RETIRE", "PLAN", "EMPLOYER", "SAVINGS", "MATCH"], difficulty: "medium", category: "personal" },
+    { word: "TAX RETURN", taboo: ["IRS", "APRIL", "REFUND", "FILING", "INCOME"], difficulty: "easy", category: "personal" },
+    { word: "COMPOUND INTEREST", taboo: ["GROWTH", "TIME", "MONEY", "SAVINGS", "EARN"], difficulty: "hard", category: "personal" },
+    { word: "PASSIVE INCOME", taboo: ["RENT", "STOCKS", "EARN", "WORK", "MONEY"], difficulty: "medium", category: "personal" },
 
     // ACCOUNTING
     { word: "LIABILITY", taboo: ["DEBT", "OWE", "ASSET", "BALANCE", "LOAN"], difficulty: "easy", category: "accounting" },
     { word: "REVENUE", taboo: ["SALES", "INCOME", "MONEY", "EARNINGS", "PROFIT"], difficulty: "medium", category: "accounting" },
-    { word: "GOODWILL", taboo: ["ASSET", "VALUE", "COMPANY", "INTANGIBLE", "BRAND"], difficulty: "hard", category: "accounting" }
+    { word: "GOODWILL", taboo: ["ASSET", "VALUE", "COMPANY", "INTANGIBLE", "BRAND"], difficulty: "hard", category: "accounting" },
+    { word: "AUDIT", taboo: ["CHECK", "IRS", "REVIEW", "BOOKS", "ACCOUNTANT"], difficulty: "medium", category: "accounting" },
+    { word: "BALANCE SHEET", taboo: ["ASSETS", "LIABILITIES", "EQUITY", "STATEMENT", "FINANCIAL"], difficulty: "hard", category: "accounting" },
+    { word: "DEPRECIATION", taboo: ["VALUE", "ASSET", "DECREASE", "TIME", "TAX"], difficulty: "hard", category: "accounting" },
+    { word: "LEDGER", taboo: ["BOOKS", "RECORD", "ACCOUNTING", "ENTRY", "TRANSACTION"], difficulty: "medium", category: "accounting" },
+
+    // ECONOMICS
+    { word: "RECESSION", taboo: ["ECONOMY", "DOWNTURN", "NEGATIVE", "GROWTH", "UNEMPLOYMENT"], difficulty: "medium", category: "economics" },
+    { word: "GDP", taboo: ["ECONOMY", "TOTAL", "PRODUCTION", "COUNTRY", "VALUE"], difficulty: "medium", category: "economics" },
+    { word: "SUPPLY", taboo: ["DEMAND", "MARKET", "GOODS", "AVAILABLE", "PRICE"], difficulty: "easy", category: "economics" },
+    { word: "DEFLATION", taboo: ["PRICE", "DECREASE", "ECONOMY", "INFLATION", "VALUE"], difficulty: "hard", category: "economics" },
+    { word: "FISCAL POLICY", taboo: ["GOVERNMENT", "TAX", "SPENDING", "ECONOMY", "BUDGET"], difficulty: "hard", category: "economics" },
+
+    // INSURANCE
+    { word: "PREMIUM", taboo: ["PAYMENT", "MONTHLY", "COST", "INSURANCE", "PLAN"], difficulty: "easy", category: "insurance" },
+    { word: "DEDUCTIBLE", taboo: ["PAY", "COST", "BEFORE", "INSURANCE", "CLAIM"], difficulty: "medium", category: "insurance" },
+    { word: "POLICY", taboo: ["DOCUMENT", "PLAN", "INSURANCE", "COVERAGE", "RULES"], difficulty: "easy", category: "insurance" },
+    { word: "CLAIM", taboo: ["MONEY", "ASK", "ACCIDENT", "INSURANCE", "FORM"], difficulty: "easy", category: "insurance" },
+    { word: "BENEFICIARY", taboo: ["LIFE", "MONEY", "RECEIVE", "PERSON", "DEATH"], difficulty: "hard", category: "insurance" }
 ];
 
 const WILD_CARDS = [
